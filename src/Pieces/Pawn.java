@@ -1,5 +1,5 @@
 package Pieces;
 
-public class Pawn {
+public class Pawn extends Piece{
     /* TODO */
 }

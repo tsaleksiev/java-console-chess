@@ -1,5 +1,5 @@
 package Pieces;
 
-public class King {
+public class King extends Piece {
     /* TODO */
 }
