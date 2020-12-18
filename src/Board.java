@@ -1,8 +1,12 @@
 public class Board {
     /* TODO */
-    public static final int SIZE = 8;
+    private static final int SIZE = 8;
 
-    private static Square[][] grid = new Square[SIZE][SIZE];
+    public static Square[][] getEmptyBoard() {
+        return emptyBoard;
+    }
+
+    private static Square[][] emptyBoard = new Square[SIZE][SIZE];
 
     // Singleton
     private static Board board;
