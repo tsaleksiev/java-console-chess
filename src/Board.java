@@ -20,7 +20,7 @@ public class Board {
         return grid;
     }
 
-    public void printCurrentBoard() {
+    public static void printCurrentBoard() {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 Square currPiece = board[i][j];

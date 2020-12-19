@@ -1,6 +1,6 @@
 import Pieces.*;
 
-public class BoardInitialConfigurator {
+public class BoardConfigurator {
 
     public static void setupBoard(Square[][] board) {
         for (int i = 0; i < 8; i++) {
@@ -17,7 +17,7 @@ public class BoardInitialConfigurator {
         addQueens(board);
     }
 
-    private static void addPiece(Square square, Piece piece) {
+    public static void addPiece(Square square, Piece piece) {
         square.addPiece(piece);
         square.isEmpty = false;
     }

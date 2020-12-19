@@ -1,4 +1,7 @@
+import Pieces.AvailableMove;
 import Pieces.Piece;
+import Pieces.Queen;
+import Pieces.Square;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -27,6 +30,13 @@ public class Move {
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
+    }
+
+    public static void showAvailablePawnMoves(Square[][] board, char whiteFigure) {
+        int num = (char) (whiteFigure - 97);
+        BoardConfigurator.addPiece(board[4][num], new AvailableMove());
+        BoardConfigurator.addPiece(board[5][num], new AvailableMove());
+        Board.printCurrentBoard();
     }
 
     public int getX1() {
