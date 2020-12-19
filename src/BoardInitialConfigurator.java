@@ -3,6 +3,12 @@ import Pieces.*;
 public class BoardInitialConfigurator {
 
     public static void setupBoard(Square[][] board) {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                board[i][j] = new Square();
+            }
+        }
+
         addPawns(board);
         addRooks(board);
         addKnights(board);
@@ -12,12 +18,12 @@ public class BoardInitialConfigurator {
     }
 
     private static void addPiece(Square square, Piece piece) {
-        square.pieceOnSquare = piece;
+        square.addPiece(piece);
         square.isEmpty = false;
     }
 
     private static void clearSquare(Square square) {
-        square.pieceOnSquare = null;
+        square.setPieceOnSquare(null);
         square.isEmpty = true;
     }
 
