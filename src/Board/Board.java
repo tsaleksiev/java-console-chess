@@ -1,3 +1,5 @@
+package Board;
+
 import Pieces.Piece;
 import Pieces.Square;
 
@@ -22,6 +24,7 @@ public class Board {
 
     public static void printCurrentBoard() {
         for (int i = 0; i < 8; i++) {
+            System.out.print(8 - i + " ");
             for (int j = 0; j < 8; j++) {
                 Square currPiece = board[i][j];
                 String symbol = currPiece.getPieceOnSquare().getSymbol();
@@ -30,9 +33,15 @@ public class Board {
                 } else {
                     System.out.print(symbol);
                 }
-
             }
             System.out.println();
         }
+        System.out.println("  abcdefgh");
+    }
+
+    public static Piece findPiece(Piece piece) {
+
+        /* TODO */
+        return piece;
     }
 }

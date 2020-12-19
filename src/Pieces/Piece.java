@@ -5,6 +5,25 @@ import java.util.List;
 public class Piece {
     private Square currSq;
 
+    private int x;
+    private int y;
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
     public String getSymbol() {
         return this.symbol;
     }

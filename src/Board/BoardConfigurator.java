@@ -1,20 +1,45 @@
+package Board;
+
 import Pieces.*;
 
 public class BoardConfigurator {
 
     public static void setupBoard(Square[][] board) {
+
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 board[i][j] = new Square();
             }
         }
 
-        addPawns(board);
-        addRooks(board);
-        addKnights(board);
-        addBishops(board);
-        addKings(board);
-        addQueens(board);
+        //addPawns(board);
+        //addRooks(board);
+        //addKnights(board);
+        //addBishops(board);
+        //addKings(board);
+        //addQueens(board);
+        addWhiteFigures(board);
+
+    }
+
+    private static void addWhiteFigures(Square[][] board) {
+        addPiece(board[7][0], new Rook("white"));
+        PiecesCollection.whitePieces.put(new Rook("white"), "a1");
+        addPiece(board[7][1], new Knight());
+        PiecesCollection.whitePieces.put(new Knight(), "b1");
+        addPiece(board[7][2], new Bishop());
+        PiecesCollection.whitePieces.put(new Rook("white"), "c1");
+        addPiece(board[7][3], new Queen());
+        PiecesCollection.whitePieces.put(new Queen(), "d1");
+        addPiece(board[7][4], new King());
+        PiecesCollection.whitePieces.put(new King(), "e1");
+        addPiece(board[7][5], new Bishop());
+        PiecesCollection.whitePieces.put(new Bishop(), "f1");
+        addPiece(board[7][6], new Knight());
+        PiecesCollection.whitePieces.put(new Knight(), "g1");
+        addPiece(board[7][7], new Rook("white"));
+        PiecesCollection.whitePieces.put(new Rook("white"), "h1");
+
     }
 
     public static void addPiece(Square square, Piece piece) {
@@ -22,7 +47,7 @@ public class BoardConfigurator {
         square.isEmpty = false;
     }
 
-    private static void clearSquare(Square square) {
+    public static void clearSquare(Square square) {
         square.setPieceOnSquare(null);
         square.isEmpty = true;
     }
@@ -76,10 +101,10 @@ public class BoardConfigurator {
     }
 
     private static void addRooks(Square[][] board) {
-        addPiece(board[0][0], new Rook());
-        addPiece(board[0][7], new Rook());
-        addPiece(board[7][0], new Rook());
-        addPiece(board[7][7], new Rook());
+        addPiece(board[0][0], new Rook("white"));
+        addPiece(board[0][7], new Rook("white"));
+        addPiece(board[7][0], new Rook("white"));
+        addPiece(board[7][7], new Rook("white"));
     }
 
     private static void removeRooks(Square[][] board) {

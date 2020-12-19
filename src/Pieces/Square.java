@@ -6,7 +6,7 @@ public class Square {
 
     private int xCoord;
     private int yCoord;
-    public boolean isEmpty;
+    public boolean isEmpty = true;
 
     public void setPieceOnSquare(Piece pieceOnSquare) {
         this.pieceOnSquare = pieceOnSquare;
@@ -30,6 +30,10 @@ public class Square {
 
     public void addPiece(Piece piece) {
         this.pieceOnSquare = piece;
+    }
+
+    public void clearSquare() {
+        this.pieceOnSquare = new Piece();
     }
 
     public Piece getPieceOnSquare() {
