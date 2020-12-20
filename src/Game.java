@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Game {
 
     public static void startNew() {
-        int moves = 0;
+        int movesCounter = 0;
         boolean isFinished = false;
         Scanner sc = new Scanner(System.in);
         Board board = Board.getInstance();
@@ -16,12 +16,10 @@ public class Game {
         board.printCurrentBoard();
 
         while (!isFinished) {
-            moves++;
+            movesCounter++;
 
             System.out.println("Type coordinate:");
             String colrow = sc.nextLine();
-            int asd = colrow.charAt(0);
-            int dasd = Integer.parseInt(String.valueOf(colrow.charAt(1)));
             int row = colrow.charAt(0) - 97;
             int col = 8 - Integer.parseInt(String.valueOf(colrow.charAt(1)));
 
@@ -30,6 +28,7 @@ public class Game {
 
             if (obj instanceof Rook) {
                 System.out.println("Rook");
+                //TODO - row, col constructor
                 Move.getAvailableRookMoves();
             } else if (obj instanceof King) {
                 System.out.println("King");
@@ -42,7 +41,7 @@ public class Game {
                 Move.getAvailableKnightMoves();
             } else if (obj instanceof Pawn) {
                 System.out.println("Pawn");
-                //pawn moves
+                //pawn movesCounter
             } else if (obj instanceof Bishop) {
                 System.out.println("Bishop");
                 Move.getAvailableBishopMoves();
@@ -52,11 +51,11 @@ public class Game {
         }
 
         while (!isFinished) {
-            moves++;
+            movesCounter++;
 
             System.out.println("Select figure:");
             char whiteFigure = sc.nextLine().charAt(0);
-            System.out.print("Legal moves for ");
+            System.out.print("Legal movesCounter for ");
 
             switch (whiteFigure) {
                 case 'R':
