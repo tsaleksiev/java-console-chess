@@ -1,6 +1,6 @@
 package Pieces;
 
-public class AvailableMove extends Piece {
+public class AvailableMove extends PieceSlot {
     @Override
     public String getSymbol() {
         return symbol;

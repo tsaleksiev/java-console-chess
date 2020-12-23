@@ -2,7 +2,7 @@ package Pieces;
 
 import java.util.List;
 
-public class Rook extends Piece {
+public class Rook extends PieceSlot {
     /* TODO */
 
     @Override
@@ -10,17 +10,22 @@ public class Rook extends Piece {
         return symbol;
     }
 
-    String color;
+    private String color = "white";
 
-    private final String symbol = "R";
+    public String getColor() {
+        return this.color;
+    }
+
+    private String symbol = "R";
 
     public Rook(String color) {
-        this.color = color;
+        if (color.equals("black")) {
+            this.symbol = "r";
+            this.color = "black";
+        }
+
     }
 
-    @Override
-    public List<Square> getLegalMoves(Square[][] b) {
-        //Under construction
-        return null;
-    }
+
+
 }

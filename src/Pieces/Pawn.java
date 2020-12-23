@@ -2,18 +2,19 @@ package Pieces;
 
 import java.util.List;
 
-public class Pawn extends Piece {
+public class Pawn extends PieceSlot {
     @Override
     public String getSymbol() {
-        return symbol;
+        return this.symbol;
+    }
+
+    public Pawn(String color) {
+        if (color.equals("black"))
+            this.symbol = "p";
     }
 
     /* TODO */
     private String symbol = "P";
 
-    @Override
-    public List<Square> getLegalMoves(Square[][] b) {
-        //Under construction
-        return null;
-    }
+
 }

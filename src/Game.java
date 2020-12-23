@@ -20,31 +20,32 @@ public class Game {
 
             System.out.println("Type coordinate:");
             String colrow = sc.nextLine();
-            int row = colrow.charAt(0) - 97;
-            int col = 8 - Integer.parseInt(String.valueOf(colrow.charAt(1)));
+            int upDownCol = 8 - Integer.parseInt(String.valueOf(colrow.charAt(1)));
+            int leftRightRow = colrow.charAt(0) - 97;
 
 
-            Object obj = Board.getBoard()[col][row].getPieceOnSquare();
+
+            Object obj = Board.getBoard()[upDownCol][leftRightRow].getPieceOnSquare();
 
             if (obj instanceof Rook) {
-                System.out.println("Rook");
-                //TODO - row, col constructor
-                Move.getAvailableRookMoves();
+                System.out.println(((Rook) obj).getColor() + " rook");
+                //TODO - leftRightRow, upDownCol constructor
+                Move.printAvailableRookMoves(leftRightRow, upDownCol);
             } else if (obj instanceof King) {
                 System.out.println("King");
-                Move.getAvailableKingMoves();
+                Move.printAvailableKingMoves();
             } else if (obj instanceof Queen) {
                 System.out.println("Queen");
-                Move.getAvailableQueenMoves();
+                Move.printAvailableQueenMoves();
             } else if (obj instanceof Knight) {
                 System.out.println("Knight");
-                Move.getAvailableKnightMoves();
+                Move.printAvailableKnightMoves();
             } else if (obj instanceof Pawn) {
                 System.out.println("Pawn");
                 //pawn movesCounter
             } else if (obj instanceof Bishop) {
                 System.out.println("Bishop");
-                Move.getAvailableBishopMoves();
+                Move.printAvailableBishopMoves();
             } else {
                 System.out.println("No piece");
             }
@@ -60,19 +61,19 @@ public class Game {
             switch (whiteFigure) {
                 case 'R':
                     System.out.print("rook:\n");
-                    Move.getAvailableRookMoves();
+                    Move.printAvailableRookMoves(1, 1);
                     break;
                 case 'N':
                     System.out.print("knight:\n");
-                    Move.getAvailableKnightMoves();
+                    Move.printAvailableKnightMoves();
                     break;
                 case 'B':
                     System.out.print("bishop:\n");
-                    Move.getAvailableBishopMoves();
+                    Move.printAvailableBishopMoves();
                     break;
                 case 'Q':
                     System.out.print("queen:\n");
-                    Move.getAvailableQueenMoves();
+                    Move.printAvailableQueenMoves();
                     break;
                 case 'K':
                     System.out.print("king:\n");

@@ -1,8 +1,6 @@
 package Pieces;
 
-import java.util.List;
-
-public class Queen extends Piece {
+public class Queen extends PieceSlot {
     /* TODO */
 
     @Override
@@ -10,11 +8,12 @@ public class Queen extends Piece {
         return symbol;
     }
 
-    public final String symbol = "Q";
+    private String symbol = "Q";
 
-    @Override
-    public List<Square> getLegalMoves(Square[][] b) {
-        //Under construction
-        return null;
+    public Queen(String color) {
+        if (color.equals("black"))
+            this.symbol = "q";
     }
+
+
 }

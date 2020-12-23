@@ -2,7 +2,7 @@ package Pieces;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Piece {
+public class PieceSlot {
     private Square currSq;
 
     private int x;
@@ -38,15 +38,6 @@ public class Piece {
         this.currSq = sq;
     }
 
-    public List<Square> getLegalMoves(Square[][] b) {
-        List<Square> legalMoves = new ArrayList<>();
-        return legalMoves;
-    }
-
-    public Square[][] getLegalMoves(Square[][] currentBoard, Piece piece) {
-        //Under construction
-        return null;
-    }
 
     /* TODO */
 }

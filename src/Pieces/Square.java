@@ -1,18 +1,16 @@
 package Pieces;
 
-import Pieces.Piece;
-
 public class Square {
 
     private int xCoord;
     private int yCoord;
     public boolean isEmpty = true;
 
-    public void setPieceOnSquare(Piece pieceOnSquare) {
+    public void setPieceOnSquare(PieceSlot pieceOnSquare) {
         this.pieceOnSquare = pieceOnSquare;
     }
 
-    private Piece pieceOnSquare = new Piece();
+    private PieceSlot pieceOnSquare = new PieceSlot();
 
     public String getSymbol() {
         return symbol;
@@ -28,15 +26,15 @@ public class Square {
         return this.yCoord;
     }
 
-    public void addPiece(Piece piece) {
+    public void addPiece(PieceSlot piece) {
         this.pieceOnSquare = piece;
     }
 
     public void clearSquare() {
-        this.pieceOnSquare = new Piece();
+        this.pieceOnSquare = new PieceSlot();
     }
 
-    public Piece getPieceOnSquare() {
+    public PieceSlot getPieceOnSquare() {
         return pieceOnSquare;
     }
 

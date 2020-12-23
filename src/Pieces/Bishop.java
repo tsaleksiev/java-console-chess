@@ -1,8 +1,11 @@
 package Pieces;
 
+import Board.Board;
+import Board.BoardConfigurator;
+
 import java.util.List;
 
-public class Bishop extends Piece {
+public class Bishop extends PieceSlot {
     @Override
     public String getSymbol() {
         return symbol;
@@ -11,9 +14,9 @@ public class Bishop extends Piece {
     /* TODO */
     private String symbol = "B";
 
-    @Override
-    public List<Square> getLegalMoves(Square[][] b) {
-        //Under construction
-        return null;
+    public Bishop(String color) {
+        if (color.equals("black"))
+            this.symbol = getSymbol().toLowerCase();
     }
+
 }

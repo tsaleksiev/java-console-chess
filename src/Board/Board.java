@@ -1,6 +1,6 @@
 package Board;
 
-import Pieces.Piece;
+import Pieces.PieceSlot;
 import Pieces.Square;
 
 public class Board {
@@ -39,7 +39,7 @@ public class Board {
         System.out.println("  abcdefgh");
     }
 
-    public static Piece findPiece(Piece piece) {
+    public static PieceSlot findPiece(PieceSlot piece) {
 
         /* TODO */
         return piece;

@@ -2,7 +2,7 @@ package Pieces;
 
 import java.util.List;
 
-public class Knight extends Piece {
+public class Knight extends PieceSlot {
     /* TODO */
 
     @Override
@@ -12,9 +12,10 @@ public class Knight extends Piece {
 
     private String symbol = "N";
 
-    @Override
-    public List<Square> getLegalMoves(Square[][] b) {
-        //Under construction
-        return null;
+    public Knight(String color) {
+        if (color.equals("black"))
+            this.symbol = "n";
     }
+
+
 }
