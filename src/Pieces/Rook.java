@@ -1,8 +1,6 @@
 package Pieces;
 
-import java.util.List;
-
-public class Rook extends PieceSlot {
+public class Rook extends Piece {
     /* TODO */
 
     @Override
@@ -26,6 +24,15 @@ public class Rook extends PieceSlot {
 
     }
 
+    @Override
+    public void findLegalMoves(int upDownIndex, int leftRightIndex) {
+        Move.findLegalCrossMoves(upDownIndex, leftRightIndex);
+    }
 
-
+    @Override
+    public void printLegalMoves(int upDownIndex, int leftRightIndex) {
+        Move.printLegalRookMoves(upDownIndex, leftRightIndex);
+        System.out.println("Rook legal moves");
+        System.out.println("Rook legal moves deleted");
+    }
 }

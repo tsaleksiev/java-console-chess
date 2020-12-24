@@ -20,66 +20,30 @@ public class Game {
 
             System.out.println("Type coordinate:");
             String colrow = sc.nextLine();
-            int upDownCol = 8 - Integer.parseInt(String.valueOf(colrow.charAt(1)));
-            int leftRightRow = colrow.charAt(0) - 97;
+            int upDownIndex = 8 - Integer.parseInt(String.valueOf(colrow.charAt(1)));
+            int leftRightIndex = colrow.charAt(0) - 97;
 
 
+            Object objOrigin = Board.getBoard()[upDownIndex][leftRightIndex].getPieceOnSquare();
 
-            Object obj = Board.getBoard()[upDownCol][leftRightRow].getPieceOnSquare();
+            if (objOrigin instanceof Piece) {
+                if (((Piece) objOrigin).getSymbol() == null) {
+                    System.out.println("No piece\nNo legal moves");
+                    continue;
+                }
+                System.out.println(((Piece) objOrigin).getSymbol());
+                ((Piece) objOrigin).printLegalMoves(upDownIndex, leftRightIndex);
 
-            if (obj instanceof Rook) {
-                System.out.println(((Rook) obj).getColor() + " rook");
-                //TODO - leftRightRow, upDownCol constructor
-                Move.printAvailableRookMoves(leftRightRow, upDownCol);
-            } else if (obj instanceof King) {
-                System.out.println("King");
-                Move.printAvailableKingMoves();
-            } else if (obj instanceof Queen) {
-                System.out.println("Queen");
-                Move.printAvailableQueenMoves();
-            } else if (obj instanceof Knight) {
-                System.out.println("Knight");
-                Move.printAvailableKnightMoves();
-            } else if (obj instanceof Pawn) {
-                System.out.println("Pawn");
-                //pawn movesCounter
-            } else if (obj instanceof Bishop) {
-                System.out.println("Bishop");
-                Move.printAvailableBishopMoves();
-            } else {
-                System.out.println("No piece");
+                String destination = sc.nextLine();
+                upDownIndex = 8 - Integer.parseInt(String.valueOf(destination.charAt(1)));
+                leftRightIndex = destination.charAt(0) - 97;
+                Object objDest = Board.getBoard()[upDownIndex][leftRightIndex].getPieceOnSquare();
+                ((Piece) objOrigin).findLegalMoves(upDownIndex, leftRightIndex);
+
+                if (objDest instanceof LegalMove) {
+                    ((Piece) objOrigin).movePiece(upDownIndex, leftRightIndex);
+                }
             }
-        }
-
-        while (!isFinished) {
-            movesCounter++;
-
-            System.out.println("Select figure:");
-            char whiteFigure = sc.nextLine().charAt(0);
-            System.out.print("Legal movesCounter for ");
-
-            switch (whiteFigure) {
-                case 'R':
-                    System.out.print("rook:\n");
-                    Move.printAvailableRookMoves(1, 1);
-                    break;
-                case 'N':
-                    System.out.print("knight:\n");
-                    Move.printAvailableKnightMoves();
-                    break;
-                case 'B':
-                    System.out.print("bishop:\n");
-                    Move.printAvailableBishopMoves();
-                    break;
-                case 'Q':
-                    System.out.print("queen:\n");
-                    Move.printAvailableQueenMoves();
-                    break;
-                case 'K':
-                    System.out.print("king:\n");
-                    break;
-            }
-
         }
     }
 }

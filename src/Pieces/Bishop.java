@@ -1,11 +1,6 @@
 package Pieces;
 
-import Board.Board;
-import Board.BoardConfigurator;
-
-import java.util.List;
-
-public class Bishop extends PieceSlot {
+public class Bishop extends Piece {
     @Override
     public String getSymbol() {
         return symbol;
@@ -19,4 +14,10 @@ public class Bishop extends PieceSlot {
             this.symbol = getSymbol().toLowerCase();
     }
 
+    @Override
+    public void printLegalMoves(int upDownIndex, int leftRightIndex) {
+        Move.printLegalBishopMoves(upDownIndex, leftRightIndex);
+        System.out.println("Bishop legal moves");
+        System.out.println("Bishop legal moves deleted");
+    }
 }

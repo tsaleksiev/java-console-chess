@@ -2,6 +2,9 @@ package Board;
 
 import Pieces.*;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 public class BoardConfigurator {
 
     public static void setupBoard(Square[][] board) {
@@ -18,47 +21,53 @@ public class BoardConfigurator {
         //addBishops(board);
         //addKings(board);
         //addQueens(board);
-        addFiguresSet(board, "black");
-        addPiece(board[4][0], new Rook("white"));
-        addPiece(board[2][0], new Rook("white"));
-        addPiece(board[2][2], new Rook("white"));
-        addPiece(board[4][2], new Rook("white"));
+        //addFiguresSet(board, "black");
+        addPiece(board[4][0], new Queen("white"));
+        addPiece(board[2][0], new Queen("white"));
+        addPiece(board[3][7], new Bishop("white"));
+        addPiece(board[5][1], new Bishop("white"));
+        addPiece(board[1][2], new Queen("white"));
+        addPiece(board[1][2], new Bishop("white"));
+        addPiece(board[1][2], new Queen("white"));
         addFiguresSet(board, "white");
 
 
     }
 
     private static void addFiguresSet(Square[][] board, String color) {
-        String row = "";
+        String upDownRow = "";
         int upDownCoords = 0;
+        Map<Piece, String> collectionMap = new LinkedHashMap<>();
 
         if (color.equals("white")) {
-            row = "1";
+            upDownRow = "1";
             upDownCoords = 7;
+            collectionMap = PiecesCollection.whiteActivePieces;
         } else if (color.equals("black")) {
-            row = "8";
+            upDownRow = "8";
             upDownCoords = 0;
+            collectionMap = PiecesCollection.whiteActivePieces;
         }
         addPiece(board[upDownCoords][0], new Rook(color));
-        PiecesCollection.whiteActivePieces.put(new Rook(color), "a" + row);
+        collectionMap.put(new Rook(color), "a" + upDownRow);
         addPiece(board[upDownCoords][1], new Knight(color));
-        PiecesCollection.whiteActivePieces.put(new Knight(color), "b" + row);
+        collectionMap.put(new Knight(color), "b" + upDownRow);
         addPiece(board[upDownCoords][2], new Bishop(color));
-        PiecesCollection.whiteActivePieces.put(new Rook(color), "c" + row);
+        collectionMap.put(new Rook(color), "c" + upDownRow);
         addPiece(board[upDownCoords][3], new Queen(color));
-        PiecesCollection.whiteActivePieces.put(new Queen(color), "d" + row);
+        collectionMap.put(new Queen(color), "d" + upDownRow);
         addPiece(board[upDownCoords][4], new King(color));
-        PiecesCollection.whiteActivePieces.put(new King(color), "e" + row);
+        collectionMap.put(new King(color), "e" + upDownRow);
         addPiece(board[upDownCoords][5], new Bishop(color));
-        PiecesCollection.whiteActivePieces.put(new Bishop(color), "f" + row);
+        collectionMap.put(new Bishop(color), "f" + upDownRow);
         addPiece(board[upDownCoords][6], new Knight(color));
-        PiecesCollection.whiteActivePieces.put(new Knight(color), "g1");
+        collectionMap.put(new Knight(color), "g" + upDownRow);
         addPiece(board[upDownCoords][7], new Rook(color));
-        PiecesCollection.whiteActivePieces.put(new Rook(color), "h1");
+        collectionMap.put(new Rook(color), "h" + upDownRow);
 
     }
 
-    public static void addPiece(Square square, PieceSlot piece) {
+    public static void addPiece(Square square, Piece piece) {
         square.addPiece(piece);
         square.isEmpty = false;
     }

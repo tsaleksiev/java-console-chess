@@ -1,6 +1,6 @@
 package Pieces;
 
-public class Queen extends PieceSlot {
+public class Queen extends Piece {
     /* TODO */
 
     @Override
@@ -15,5 +15,9 @@ public class Queen extends PieceSlot {
             this.symbol = "q";
     }
 
-
+    @Override
+    public void printLegalMoves(int upDownIndex, int leftRightIndex) {
+        Move.printLegalQueenMoves(upDownIndex, leftRightIndex);
+        System.out.println("Queen legal moves");
+    }
 }

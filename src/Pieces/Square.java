@@ -6,11 +6,11 @@ public class Square {
     private int yCoord;
     public boolean isEmpty = true;
 
-    public void setPieceOnSquare(PieceSlot pieceOnSquare) {
+    public void setPieceOnSquare(Piece pieceOnSquare) {
         this.pieceOnSquare = pieceOnSquare;
     }
 
-    private PieceSlot pieceOnSquare = new PieceSlot();
+    private Piece pieceOnSquare = new Piece();
 
     public String getSymbol() {
         return symbol;
@@ -26,15 +26,15 @@ public class Square {
         return this.yCoord;
     }
 
-    public void addPiece(PieceSlot piece) {
+    public void addPiece(Piece piece) {
         this.pieceOnSquare = piece;
     }
 
     public void clearSquare() {
-        this.pieceOnSquare = new PieceSlot();
+        this.pieceOnSquare = new Piece();
     }
 
-    public PieceSlot getPieceOnSquare() {
+    public Piece getPieceOnSquare() {
         return pieceOnSquare;
     }
 

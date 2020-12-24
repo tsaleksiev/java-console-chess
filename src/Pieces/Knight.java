@@ -1,8 +1,6 @@
 package Pieces;
 
-import java.util.List;
-
-public class Knight extends PieceSlot {
+public class Knight extends Piece {
     /* TODO */
 
     @Override
@@ -17,5 +15,8 @@ public class Knight extends PieceSlot {
             this.symbol = "n";
     }
 
-
+    @Override
+    public void printLegalMoves(int upDownIndex, int leftRightIndex) {
+        System.out.println("Knight legal moves");
+    }
 }
