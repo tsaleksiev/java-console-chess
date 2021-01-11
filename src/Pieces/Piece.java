@@ -1,60 +1,21 @@
 package Pieces;
 
-public class Piece {
-    private Square currSq;
-    String color;
-    String name;
+import Common.Coordinate;
 
-    private int upDownIndex;
-    private int leftRightIndex;
+import java.util.List;
 
-    public int getX() {
-        return upDownIndex;
-    }
+public interface Piece {
+    public String getSymbol();
 
-    public void setX(int x) {
-        this.upDownIndex = x;
-    }
+    public int getColIndex();
 
-    public int getY() {
-        return upDownIndex;
-    }
+    public int getRowIndex();
 
-    public void setY(int y) {
-        this.leftRightIndex = y;
-    }
+    void setColIndex(int newCol);
 
-    public String getSymbol() {
-        return this.symbol;
-    }
+    void setRowIndex(int newRow);
 
-    private String symbol;
+    void printLegalMoves();
 
-    public Square getPosition() {
-        return currSq;
-    }
-
-    public void setPosition(Square sq) {
-        this.currSq = sq;
-    }
-
-    public void printLegalMoves(int upDownIndex, int leftRightIndex) {
-        System.out.println("Default legal moves printed");
-        System.out.println("Default legal moves deleted");
-    }
-
-    public void findLegalMoves(int upDownIndex, int leftRightIndex) {
-        System.out.println("Default legal moves available pinned on board");
-    }
-
-    public void movePiece(int upDownDestination, int leftRightDestination) {
-        Move.addPiece(upDownDestination, leftRightDestination);
-        System.out.println("Piece added to destination.");
-        Move.removePiece(this.upDownIndex, this.leftRightIndex);
-        System.out.println("Piece removed from origin.");
-
-    }
-
-
-    /* TODO */
+    List<Coordinate> getLegalMoves();
 }

@@ -1,22 +1,61 @@
 package Pieces;
 
-public class Knight extends Piece {
-    /* TODO */
+import BoardEngine.Board;
+import BoardEngine.BoardPrinter;
+import Common.ChessColor;
+import Common.Coordinate;
+import Pieces.LegalMoveEngine.LegalMoveEngine;
 
-    @Override
+import java.util.LinkedList;
+import java.util.List;
+
+public class Knight implements Piece {
+    private Coordinate coords = new Coordinate();
+    private ChessColor color;
+    private String symbol;
+    private List<Coordinate> legalMoves = new LinkedList<>();
+
     public String getSymbol() {
         return symbol;
     }
 
-    private String symbol = "N";
-
-    public Knight(String color) {
-        if (color.equals("black"))
-            this.symbol = "n";
+    @Override
+    public int getColIndex() {
+        return this.coords.getCol();
     }
 
     @Override
-    public void printLegalMoves(int upDownIndex, int leftRightIndex) {
-        System.out.println("Knight legal moves");
+    public int getRowIndex() {
+        return this.coords.getRow();
+    }
+
+    @Override
+    public void setColIndex(int newCol) {
+
+    }
+
+    @Override
+    public void setRowIndex(int newRow) {
+
+    }
+
+    @Override
+    public void printLegalMoves() {
+        LegalMoveEngine.findKnightLegalMoves(legalMoves, this.coords.getCol(), this.coords.getRow());
+    }
+
+    @Override
+    public List<Coordinate> getLegalMoves() {
+        return legalMoves;
+    }
+
+    public Knight(ChessColor color, int col, int row) {
+        this.color = color;
+        this.coords.setCol(col);
+        this.coords.setRow(row);
+        switch (color) {
+            case WHITE -> this.symbol = "N";
+            case BLACK -> this.symbol = "n";
+        }
     }
 }

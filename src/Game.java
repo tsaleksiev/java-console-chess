@@ -1,48 +1,39 @@
-import Board.*;
-import Pieces.*;
+import BoardEngine.*;
+import Pieces.LegalMoveEngine.LegalMoveEngine;
+import Pieces.MoveEngine.MoveEngine;
+import Pieces.Piece;
 
 import java.util.Scanner;
 
 public class Game {
-
     public static void startNew() {
-        int movesCounter = 0;
+        MoveCounter moveCounter = new MoveCounter();
         boolean isFinished = false;
+
         Scanner sc = new Scanner(System.in);
-        Board board = Board.getInstance();
 
         //Sets up the board with pieces.
-        BoardConfigurator.setupBoard(Board.getBoard());
-        board.printCurrentBoard();
+        BoardBuilder.setupBoard(Board.getBoard());
+        BoardPrinter.printBoard(Board.getBoard());
 
         while (!isFinished) {
-            movesCounter++;
+            moveCounter.increaseCount();
+            System.out.println("Type coordinate or move:");
+            String input = sc.nextLine();
+            String[] tokens = input.split("->");
+            String colrowFrom = tokens[0];
+            int colFrom = 8 - Integer
+                    .parseInt(String.valueOf(colrowFrom.charAt(1)));
+            int rowFrom = colrowFrom.charAt(0) - 97;
 
-            System.out.println("Type coordinate:");
-            String colrow = sc.nextLine();
-            int upDownIndex = 8 - Integer.parseInt(String.valueOf(colrow.charAt(1)));
-            int leftRightIndex = colrow.charAt(0) - 97;
-
-
-            Object objOrigin = Board.getBoard()[upDownIndex][leftRightIndex].getPieceOnSquare();
-
-            if (objOrigin instanceof Piece) {
-                if (((Piece) objOrigin).getSymbol() == null) {
-                    System.out.println("No piece\nNo legal moves");
-                    continue;
-                }
-                System.out.println(((Piece) objOrigin).getSymbol());
-                ((Piece) objOrigin).printLegalMoves(upDownIndex, leftRightIndex);
-
-                String destination = sc.nextLine();
-                upDownIndex = 8 - Integer.parseInt(String.valueOf(destination.charAt(1)));
-                leftRightIndex = destination.charAt(0) - 97;
-                Object objDest = Board.getBoard()[upDownIndex][leftRightIndex].getPieceOnSquare();
-                ((Piece) objOrigin).findLegalMoves(upDownIndex, leftRightIndex);
-
-                if (objDest instanceof LegalMove) {
-                    ((Piece) objOrigin).movePiece(upDownIndex, leftRightIndex);
-                }
+            if (tokens.length == 1) {
+                LegalMoveEngine.getPieceLegalMoves(colFrom, rowFrom);
+            } else {
+                String colrowTo = tokens[1];
+                int colTo = 8 - Integer
+                        .parseInt(String.valueOf(colrowTo.charAt(1)));
+                int rowTo = colrowTo.charAt(0) - 97;
+                MoveEngine.movePiece(colFrom, rowFrom, colTo, rowTo);
             }
         }
     }

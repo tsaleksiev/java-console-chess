@@ -1,23 +1,59 @@
 package Pieces;
 
-public class Bishop extends Piece {
-    @Override
+import Common.ChessColor;
+import Common.Coordinate;
+import Pieces.LegalMoveEngine.LegalMoveEngine;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class Bishop implements Piece {
+    private Coordinate coords = new Coordinate();
+    private ChessColor color;
+    private String symbol;
+    private List<Coordinate> legalMoves = new LinkedList<>();
+
     public String getSymbol() {
         return symbol;
     }
 
-    /* TODO */
-    private String symbol = "B";
-
-    public Bishop(String color) {
-        if (color.equals("black"))
-            this.symbol = getSymbol().toLowerCase();
+    @Override
+    public List<Coordinate> getLegalMoves() {
+        return legalMoves;
     }
 
     @Override
-    public void printLegalMoves(int upDownIndex, int leftRightIndex) {
-        Move.printLegalBishopMoves(upDownIndex, leftRightIndex);
-        System.out.println("Bishop legal moves");
-        System.out.println("Bishop legal moves deleted");
+    public int getColIndex() {
+        return this.coords.getCol();
+    }
+
+    @Override
+    public int getRowIndex() {
+        return this.coords.getRow();
+    }
+
+    @Override
+    public void setColIndex(int newCol) {
+
+    }
+
+    @Override
+    public void setRowIndex(int newRow) {
+
+    }
+
+    @Override
+    public void printLegalMoves() {
+        LegalMoveEngine.findBishopLegalMoves(legalMoves, this.coords.getCol(), this.coords.getRow());
+    }
+
+    public Bishop(ChessColor color, int col, int row) {
+        this.color = color;
+        this.coords.setCol(col);
+        this.coords.setRow(row);
+        switch (color) {
+            case WHITE -> this.symbol = "B";
+            case BLACK -> this.symbol = "b";
+        }
     }
 }
