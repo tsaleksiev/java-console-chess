@@ -46,13 +46,9 @@ public class Rook implements Piece {
     }
 
     @Override
-    public void setColIndex(int newCol) {
-
-    }
-
-    @Override
-    public void setRowIndex(int newRow) {
-
+    public void setColRowIndex(int newCol, int newRow) {
+        this.coords.setCol(newCol);
+        this.coords.setRow(newRow);
     }
 
     @Override

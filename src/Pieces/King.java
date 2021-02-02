@@ -27,12 +27,7 @@ public class King implements Piece {
     }
 
     @Override
-    public void setColIndex(int newCol) {
-
-    }
-
-    @Override
-    public void setRowIndex(int newRow) {
+    public void setColRowIndex(int newCol, int newRow) {
 
     }
 

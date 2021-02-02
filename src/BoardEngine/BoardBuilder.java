@@ -18,7 +18,7 @@ public abstract class BoardBuilder {
         populateBoard(board, bPlayer.getPieces());
     }
 
-    private static void populateBoard(Square[][] board,
+    public static void populateBoard(Square[][] board,
                                       List<Piece> pieces) {
         for (int i = 0; i < pieces.size(); i++) {
             Piece curr = pieces.get(i);

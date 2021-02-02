@@ -10,6 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Knight implements Piece {
+
     private Coordinate coords = new Coordinate();
     private ChessColor color;
     private String symbol;
@@ -30,12 +31,7 @@ public class Knight implements Piece {
     }
 
     @Override
-    public void setColIndex(int newCol) {
-
-    }
-
-    @Override
-    public void setRowIndex(int newRow) {
+    public void setColRowIndex(int newCol, int newRow) {
 
     }
 

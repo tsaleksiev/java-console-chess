@@ -25,6 +25,13 @@ public abstract class BoardPrinter {
         System.out.println("  abcdefgh");
     }
 
+    private static boolean coordMatch(int boardCol, int boardRow, int pieceCol, int pieceRow) {
+        if (boardCol == pieceCol && boardRow == pieceRow) {
+            return true;
+        }
+        return false;
+    }
+
     public static void printBoardWithLegalMoves(Square[][] board,
                                                 List<Coordinate> legalMoves) {
         for (int col = 0; col < Board.SIZE; col++) {

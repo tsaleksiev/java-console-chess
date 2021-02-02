@@ -20,7 +20,7 @@ public class Game {
             moveCounter.increaseCount();
             System.out.println("Type coordinate or move:");
             String input = sc.nextLine();
-            String[] tokens = input.split("->");
+            String[] tokens = input.split("-");
             String colrowFrom = tokens[0];
             int colFrom = 8 - Integer
                     .parseInt(String.valueOf(colrowFrom.charAt(1)));

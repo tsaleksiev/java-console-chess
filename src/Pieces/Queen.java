@@ -30,14 +30,10 @@ public class Queen implements Piece {
     }
 
     @Override
-    public void setColIndex(int newCol) {
+    public void setColRowIndex(int newCol, int newRow) {
 
     }
 
-    @Override
-    public void setRowIndex(int newRow) {
-
-    }
 
     @Override
     public void printLegalMoves() {
